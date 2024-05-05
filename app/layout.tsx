@@ -21,7 +21,7 @@ export default function RootLayout({
           {/* Header */}
           <Box as="header" bg="gray.100" py={4}>
             <Container maxW="container.lg">
-              <Heading as="h1" size="xl">Your Name</Heading>
+              <Heading as="h1" size="xl">Andrew Chepurny</Heading>
               {/* Navigation menu */}
             </Container>
           </Box>
@@ -34,7 +34,7 @@ export default function RootLayout({
           {/* Footer */}
           <Box as="footer" bg="gray.100" py={4}>
             <Container maxW="container.lg">
-              <Text>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</Text>
+              <Text>&copy; {new Date().getFullYear()} Andrew Chepurny. All rights reserved.</Text>
               {/* Contact information and social media links */}
             </Container>
           </Box>
