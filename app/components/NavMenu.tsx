@@ -2,7 +2,7 @@ import { Box, Container, Flex, Heading, Link } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 
 const NavigationMenu = () => (
-    <Box as="header" bg="gray.500" py={4}>
+    <Box as="header" bg="gray.400" py={4}>
         <Container maxW="container.lg">
             <Heading as="h1" size="xl">Andrew Chepurny</Heading>
             <Flex as="nav" justifyContent="space-between" alignItems="center" p={4}>

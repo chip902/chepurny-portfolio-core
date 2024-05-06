@@ -6,6 +6,7 @@ export const projects = [
       technologies: ['React', 'Next.js', 'Chakra UI'],
       liveDemo: 'https://project1.example.com',
       repository: 'https://github.com/yourusername/project1',
+      summary: "lorem ipsum"
     },
     // Add more projects...
   ];

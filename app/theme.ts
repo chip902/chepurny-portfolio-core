@@ -159,7 +159,6 @@ const mobileMenuStyles = {
 		Button: {
 			variants: {
 				mobileMenu: {
-					// Custom styles for mobile menu buttons
 					fontSize: "med",
 					fontWeight: "med",
 					textAlign: "left",
@@ -167,7 +166,6 @@ const mobileMenuStyles = {
 				},
 			},
 		},
-		// ... other component customizations if needed ...
 	},
 };
 

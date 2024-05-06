@@ -1,18 +1,17 @@
 "use client";
-import { HStack, Switch, Text, useColorMode } from '@chakra-ui/react'
+import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { CgDarkMode } from "react-icons/cg";
 
 const ColorModeSwitch = () => {
-  const { toggleColorMode, colorMode } = useColorMode()
-  return (
-    <HStack>
-      <Switch
-        colorScheme={'red'}
-        isChecked={colorMode === 'dark'}
-        onChange={toggleColorMode}
-      />
-      <Text whiteSpace={'nowrap'}>Dark Mode</Text>
-    </HStack>
-  )
-}
+	const { toggleColorMode, colorMode } = useColorMode();
+	return (
+		<HStack>
+			<Switch colorScheme={"green"} isChecked={colorMode === "dark"} onChange={toggleColorMode} />
+			<Text whiteSpace={"nowrap"}>
+				<CgDarkMode fontSize="18px"/>
+			</Text>
+		</HStack>
+	);
+};
 
-export default ColorModeSwitch
+export default ColorModeSwitch;
