@@ -6,7 +6,7 @@ const ProjectsSection = () => (
   <Box padding="4" maxW="1200px" margin="auto">
       <SimpleGrid columns={1} spacing={10}>
         {projects.map(project => (
-          <ProjectCard key={project.id} {...project} />
+          <ProjectCard project={project} key={project.id} {...project} />
         ))}
       </SimpleGrid>
     </Box>

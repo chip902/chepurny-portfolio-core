@@ -1,33 +1,36 @@
-import { Box, Heading, Text, Link } from '@chakra-ui/react';
+"use client";
+import { Box, Image, Text, useDisclosure } from "@chakra-ui/react";
+import ProjectModal from "./Modal";
+import { Project } from "../types/project";
 
-interface Props {
-    title: string;
-    description: string;
-    technologies: string[];
-    liveDemo: string;
-    repository: string;
-    summary: string;
+interface ProjectCardProps {
+	project: Project;
 }
 
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	return (
+		<Box
+			borderWidth={3}
+			_hover={{
+				transform: "scale(1.03)",
+				transitionDuration: "0.2s",
+				transitionTimingFunction: "ease-in-out",
+			}}
+			borderRadius={10}
+			overflow={"hidden"}
+			p={4}
+			onClick={onOpen}>
+			<Image src={project.imageUrl} alt={project.title} />
+			<Box p="6">
+				<Text mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+					{project.title}
+				</Text>
+				<Text>{project.summary}</Text>
+			</Box>
+			<ProjectModal isOpen={isOpen} onClose={onClose} project={project} />
+		</Box>
+	);
+};
 
-const ProjectCard = ( { title, description, technologies, liveDemo, repository }:Props ) => {
-    return (
-      <Box borderWidth={3} _hover={{
-        transform: 'scale(1.03)',
-        transitionDuration: '0.2s',
-        transitionTimingFunction: 'ease-in-out',
-      }}
-      borderRadius={10}
-      overflow={'hidden'} p={4}>
-        <Heading as="h3" size="md" mb={2}>{title}</Heading>
-        <Text mb={2}>{description}</Text>
-        <Text mb={2}>
-          <strong>Technologies:</strong> {technologies.join(', ')}
-        </Text>
-        <Link href={liveDemo} isExternal mr={4}>Live Demo</Link>
-        <Link href={repository} isExternal>Repository</Link>
-      </Box>
-    );
-  };
-
-  export default ProjectCard;
+export default ProjectCard;

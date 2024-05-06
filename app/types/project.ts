@@ -1,6 +1,6 @@
 // types/Project.ts
 export interface Project {
-    id: string;
+    id: number;
     title: string;
     imageUrl: string;
     summary: string;
