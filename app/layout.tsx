@@ -1,13 +1,15 @@
 import { Providers } from "./providers";
+import { Roboto } from "next/font/google";
 
-export const metadata = {
-	title: "Andrew Chepurny - Portfolio",
-	description: "Showcase of my coding projects and skills",
-};
-
+const roboto = Roboto({
+	weight: "400",
+	style: "normal",
+	display: "swap",
+	subsets: ["latin"],
+});
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html className={roboto.className} lang="en">
 			<body>
 				<Providers>{children}</Providers>
 			</body>

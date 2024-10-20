@@ -1,23 +1,15 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { Roboto } from "next/font/google";
 import Layout from "@/app/layout";
-
-const roboto = Roboto({
-	weight: "400",
-	style: "normal",
-	display: "swap",
-	subsets: ["latin"],
-});
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
 				<Head>
-					<style>{`body { font-family: ${roboto.style.fontFamily}; }`}</style>
+					<style>{`body { font-family: roberto; }`}</style>
 				</Head>
 				<Layout>
-					<body className={roboto.className}>
+					<body>
 						<Main />
 						<NextScript />
 					</body>
