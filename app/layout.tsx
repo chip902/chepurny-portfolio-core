@@ -1,22 +1,15 @@
-import { Box, Container, Text } from "@chakra-ui/react";
-import { Providers } from "./provider";
-import NavigationMenu from "./components/NavMenu";
-import Footer from "./components/Footer";
+import { Providers } from "./providers";
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const metadata = {
+	title: "Andrew Chepurny - Portfolio",
+	description: "Showcase of my coding projects and skills",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html>
+		<html lang="en">
 			<body>
-				<Box>
-					<Providers>
-						<NavigationMenu />
-						{/* Main content */}
-						<Container maxW="container.lg" py={8}>
-							{children}
-						</Container>
-						<Footer />
-					</Providers>
-				</Box>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

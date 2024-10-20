@@ -73,9 +73,9 @@ const buttonLink = {
 
 const fontConfig = {
 	fonts: {
-		body: "Roboto, system-ui, sans-serif",
-		nav: "Roboto, system-ui, sans-serif",
-		heading: "Roboto, Georgia, serif",
+		body: "Quicksand, system-ui, sans-serif",
+		nav: "Quicksand, system-ui, sans-serif",
+		heading: "Quicksand, Georgia, serif",
 		mono: "Menlo, monospace",
 	},
 	fontSizes: {

@@ -1,7 +1,7 @@
 "use client";
 import { Box, Image, Text, useDisclosure } from "@chakra-ui/react";
 import ProjectModal from "./Modal";
-import { Project } from "../types/project";
+import { Project } from "@/app/types/project";
 
 interface ProjectCardProps {
 	project: Project;
