@@ -1,36 +1,61 @@
 "use client";
 
-import { Box, Heading, SimpleGrid, Text, Badge, Button, VStack, HStack, useColorModeValue } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Heading, SimpleGrid, Text, Badge, Button, VStack, HStack, useColorModeValue, Spinner } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 
-const projects = [
-	{
-		title: "Project 1",
-		description: "A brief description of Project 1",
-		technologies: ["React", "Node.js", "MongoDB"],
-		githubLink: "https://github.com/yourusername/project1",
-		liveLink: "https://project1.com",
-	},
-	{
-		title: "Project 2",
-		description: "A brief description of Project 2",
-		technologies: ["Vue.js", "Express", "PostgreSQL"],
-		githubLink: "https://github.com/yourusername/project2",
-		liveLink: "https://project2.com",
-	},
-	{
-		title: "Project 3",
-		description: "A brief description of Project 3",
-		technologies: ["React Native", "Firebase"],
-		githubLink: "https://github.com/yourusername/project3",
-		liveLink: "https://project3.com",
-	},
-];
+interface Project {
+	title: string;
+	description: string;
+	technologies: string[];
+	githubLink: string;
+	liveLink: string;
+}
 
-const Projects = () => {
+const Projects = ({ initialProjects }: { initialProjects: Project[] }) => {
+	const [projects, setProjects] = useState<Project[]>(initialProjects);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+
 	const bgColor = useColorModeValue("gray.100", "gray.700");
 
+	useEffect(() => {
+		const fetchProjects = async () => {
+			setLoading(true);
+			try {
+				const response = await fetch("/api/projects");
+				if (!response.ok) {
+					throw new Error("Failed to fetch projects");
+				}
+				const data = await response.json();
+				setProjects(data);
+			} catch (err) {
+				setError("Failed to load projects. Please try again later.");
+				console.error("Error fetching projects:", err);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchProjects();
+	}, []);
+
+	if (loading) {
+		return (
+			<Box as="section" id="projects" py={{ base: 20, md: 32 }} bg={bgColor} textAlign="center">
+				<Spinner size="xl" />
+			</Box>
+		);
+	}
+
+	if (error) {
+		return (
+			<Box as="section" id="projects" py={{ base: 20, md: 32 }} bg={bgColor} textAlign="center">
+				<Text color="red.500">{error}</Text>
+			</Box>
+		);
+	}
 	return (
 		<Box as="section" id="projects" py={{ base: 20, md: 32 }} bg={bgColor}>
 			<Box maxW="6xl" mx="auto" px={4}>
@@ -53,12 +78,16 @@ const Projects = () => {
 									))}
 								</HStack>
 								<HStack spacing={4}>
-									<Button leftIcon={<FaGithub />} as="a" href={project.githubLink} target="_blank" size="sm" variant="outline">
-										GitHub
-									</Button>
-									<Button rightIcon={<ExternalLinkIcon />} as="a" href={project.liveLink} target="_blank" size="sm" colorScheme="blue">
-										Live Demo
-									</Button>
+									{project.githubLink && (
+										<Button leftIcon={<FaGithub />} as="a" href={project.githubLink} target="_blank" size="sm" variant="outline">
+											GitHub
+										</Button>
+									)}
+									{project.liveLink && (
+										<Button rightIcon={<ExternalLinkIcon />} as="a" href={project.liveLink} target="_blank" size="sm" colorScheme="blue">
+											Live Demo
+										</Button>
+									)}
 								</HStack>
 							</VStack>
 						</Box>
