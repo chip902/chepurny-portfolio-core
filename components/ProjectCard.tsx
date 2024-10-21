@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			{project.imageUrl && <Image src={project.imageUrl} alt={project.title} />}
 			<Box p="6">
 				<Text mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-					{project.title}
+					{formatProjectTitle(project.title)}
 				</Text>
 				<Text>{project.summary || project.description}</Text>
 			</Box>
