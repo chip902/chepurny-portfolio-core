@@ -1,7 +1,18 @@
 "use client";
+
 import { Box, Image, Text, useDisclosure } from "@chakra-ui/react";
 import ProjectModal from "./Modal";
-import { Project } from "@/app/types/project";
+import { formatProjectTitle } from "@/lib/utils";
+
+interface Project {
+	title: string;
+	description: string;
+	technologies: string[];
+	githubLink: string;
+	liveLink: string;
+	imageUrl?: string;
+	summary?: string;
+}
 
 interface ProjectCardProps {
 	project: Project;
@@ -9,6 +20,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	return (
 		<Box
 			borderWidth={3}
@@ -21,14 +33,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			overflow={"hidden"}
 			p={4}
 			onClick={onOpen}>
-			<Image src={project.imageUrl} alt={project.title} />
+			{project.imageUrl && <Image src={project.imageUrl} alt={project.title} />}
 			<Box p="6">
 				<Text mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
 					{project.title}
 				</Text>
-				<Text>{project.summary}</Text>
+				<Text>{project.summary || project.description}</Text>
 			</Box>
-			<ProjectModal isOpen={isOpen} onClose={onClose} project={project} />
+			<ProjectModal isOpen={isOpen} onClose={onClose} project={project} onClick={() => {}} />
 		</Box>
 	);
 };

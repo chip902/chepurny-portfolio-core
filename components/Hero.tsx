@@ -15,7 +15,7 @@ const Hero = () => {
 						</Text>
 					</Heading>
 					<Text fontSize={{ base: "lg", sm: "xl", md: "2xl" }} color="gray.500">
-						I&apos;m a passionate developer with expertise in Web Development, Machine Learning and Analytics Middleware Development.
+						I&apos;m a Senior Digital Analytics Engineer & Web Developer
 					</Text>
 					<Button size="lg" rightIcon={<ArrowForwardIcon />}>
 						View My Work
