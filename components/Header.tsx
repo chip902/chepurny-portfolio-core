@@ -38,9 +38,10 @@ const Header = () => {
 					mt={{ base: 4, md: 0 }}
 					px={5}
 					spacing={6}>
-					<Link href="#projects">Projects</Link>
-					<Link href="#skills">Skills</Link>
-					<Link href="#contact">Contact</Link>
+					<Link href="/about">About Me</Link>
+					<Link href="/#projects">Projects</Link>
+					<Link href="/#skills">Skills</Link>
+					<Link href="/#contact">Contact</Link>
 				</Stack>
 
 				<Box>
@@ -64,6 +65,9 @@ const Header = () => {
 			<Collapse in={isOpen} animateOpacity>
 				<Box pb={4} display={{ md: "none" }}>
 					<Stack as="nav" spacing={4}>
+						<Link href="/about" onClick={toggle}>
+							About Me
+						</Link>
 						<Link href="#projects" onClick={toggle}>
 							Projects
 						</Link>
